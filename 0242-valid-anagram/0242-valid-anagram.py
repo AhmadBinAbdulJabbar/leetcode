@@ -3,16 +3,13 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        countS, countT = {}, {}
+        count_s = {}
+        count_t = {}
 
-        for i in range(len(s)):
-            countS[s[i]] = 1 + countS.get(s[i], 0)
-            countT[t[i]] = 1 + countT.get(t[i], 0)
+        for char in s:
+            count_s[char] = count_s.get(char, 0) + 1
 
-        for c in countS:
-            if countS[c] != countT.get(c, 0):
-                return False
+        for char in t:
+            count_t[char] = count_t.get(char, 0) + 1
 
-        return True
-
-        
+        return count_s == count_t
